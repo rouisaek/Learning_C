@@ -1,16 +1,30 @@
 #include <stdio.h>
-
-char to_uppercase(char ch);
-char to_lowercase(char ch);
-char swapcase(char ch);
+#include <stdbool.h>
+#include "mimic.h"
 
 int main()
 {
-    printf("Latter casing swaped: %c\n", swapcase('a')); // Case one
-    printf("Latter casing swaped: %c\n", swapcase('B')); // Case two
-    printf("Latter casing swaped: %c\n", swapcase('1')); // Case three
+    char name[] = "Test test TEST";
+    int leg = get_str_len(name);
+
+    printf("%s\n", swapcase(name, leg));
 
     return 0;
+}
+
+int get_str_len(char str[])
+{
+    int length = 0;
+    while (str[length] != '\0')
+    {
+        length++;
+    }
+    return length;
+}
+
+bool is_null_or_empty(char str[])
+{
+    return (str == NULL || str[0] == '\0');
 }
 
 char to_uppercase(char ch)
@@ -29,13 +43,26 @@ char to_lowercase(char ch)
     return ch;
 }
 
-char swapcase(char ch)
+char *swapcase(char str[], int size)
 {
-    if (ch >= 'a' && ch <= 'z')
-        return ch - 32;
+    /*
+        1. Check if the string for null or empty.
+        2. Get the string for manipulation.
+        3. Swap the lowercase latters to uppercase letters.
+        4. Swap the uppercase letters to lowercase latters.
+    */
 
-    if (ch >= 'A' && ch <= 'Z')
-        return ch + 32;
+    if (!is_null_or_empty(str))
+    {
+        for (int i = 0; i < size; i++)
+        {
+            if (str[i] >= 'a' && str[i] <= 'z')
+                str[i] -= 32;
 
-    return ch;
+            else if (str[i] >= 'A' && str[i] <= 'Z')
+                str[i] += 32;
+        }
+    }
+
+    return str;
 }
