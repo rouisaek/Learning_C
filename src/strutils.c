@@ -17,20 +17,20 @@ bool is_null_or_empty(char str[])
     return (str == NULL || str[0] == '\0');
 }
 
-char to_uppercase(char ch)
+char to_uppercase(char *ch)
 {
-    if (ch >= 'a' && ch <= 'z')
-        return ch - ('a' - 'A');
+    if (*ch >= 'a' && *ch <= 'z')
+        return *ch -= ('a' - 'A');
 
-    return ch;
+    return *ch;
 }
 
-char to_lowercase(char ch)
+char to_lowercase(char *ch)
 {
-    if (ch >= 'A' && ch <= 'Z')
-        return ch + ('z' - 'Z');
+    if (*ch >= 'A' && *ch <= 'Z')
+        return *ch += ('z' - 'Z');
 
-    return ch;
+    return *ch;
 }
 
 void swapcase(char *arr, int size)

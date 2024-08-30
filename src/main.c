@@ -9,7 +9,7 @@ int main()
 
 	swapcase(arr, size);
 
-	for (int i = 0; i < size; i++)
+	for (int i = 0; i < size; ++i)
 	{
 		if (arr[i] >= 'a' && arr[i] <= 'z')
 			printf("\033[32m%c ", arr[i]);

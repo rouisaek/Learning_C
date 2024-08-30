@@ -1,0 +1,2 @@
+unsigned char *matrix1 = (unsigned char *)&matrix1[0];
+unsigned char *nextAddress = matrix1 + sizeof(matrix1) / sizeof(matrix1[0]);
